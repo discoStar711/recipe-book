@@ -6,6 +6,9 @@
 [Flask-JWT-Extended installation](https://flask-jwt-extended.readthedocs.io/en/stable/installation/)<br />
 [Flask-CORS installation](https://flask-cors.readthedocs.io/en/latest/)
 
+**Initialize a database:**<br />
+`init-db`
+
 **Run:**<br />
 `flask run`
 
