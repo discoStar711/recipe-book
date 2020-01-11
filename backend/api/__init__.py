@@ -5,6 +5,7 @@ from . import ingredient
 from . import recipe
 from flask import Flask, jsonify, request, session, make_response
 from flask_jwt_extended import JWTManager
+from flask_cors import CORS
 
 
 def create_app(test_config=None):
@@ -30,5 +31,6 @@ def create_app(test_config=None):
 
     app.config['JWT_SECRET_KEY'] = '1234'
     JWTManager(app)
+    CORS(app, supports_credentials=True)
 
     return app
