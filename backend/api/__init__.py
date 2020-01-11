@@ -41,6 +41,14 @@ def create_app(test_config=None):
     def verify_token():
         return auth.respond_to_token_verification_request(request)
 
+    @app.route('/api/recipe/all', methods=['GET'])
+    def get_all_recipes():
+        return recipe.get_all_recipes(request)
+
+    @app.route('/api/ingredient/all', methods=['GET'])
+    def get_all_ingredients():
+        return ingredient.get_all_ingredients(request)
+
     db.init_app(app)
 
     return app
