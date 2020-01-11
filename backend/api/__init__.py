@@ -37,6 +37,10 @@ def create_app(test_config=None):
     def get_token():
         return auth.get_token()
 
+    @app.route('/api/token', methods=['GET'])
+    def verify_token():
+        return auth.respond_to_token_verification_request(request)
+
     db.init_app(app)
 
     return app
