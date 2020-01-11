@@ -33,6 +33,10 @@ def create_app(test_config=None):
     JWTManager(app)
     CORS(app, supports_credentials=True)
 
+    @app.route('/api/token/new', methods=['GET'])
+    def get_token():
+        return auth.get_token()
+
     db.init_app(app)
 
     return app
