@@ -4,6 +4,7 @@ from . import auth
 from . import ingredient
 from . import recipe
 from flask import Flask, jsonify, request, session, make_response
+from flask_jwt_extended import JWTManager
 
 
 def create_app(test_config=None):
@@ -26,5 +27,8 @@ def create_app(test_config=None):
         os.makedirs(app.instance_path)
     except OSError:
         pass
+
+    app.config['JWT_SECRET_KEY'] = '1234'
+    JWTManager(app)
 
     return app
