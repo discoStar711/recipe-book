@@ -33,4 +33,6 @@ def create_app(test_config=None):
     JWTManager(app)
     CORS(app, supports_credentials=True)
 
+    db.init_app(app)
+
     return app
