@@ -27,6 +27,15 @@ def save_token_to_session(session_cookie, access_token, token_issued_time):
     database.commit()
 
 
+def respond_to_token_verification_request(request):
+    if is_token_valid(request):
+        response = make_response(jsonify({'message': 'Token is valid'}), 200)
+        return response_handler.create_success_response(response)
+    else:
+        response = make_response(jsonify({'message': 'Token is not valid'}), 200)
+        return response_handler.create_success_response(response)
+
+
 def is_token_valid(request):
     if 'SESSION_ID' in request.cookies:
         session_cookie = request.cookies.get('SESSION_ID')
